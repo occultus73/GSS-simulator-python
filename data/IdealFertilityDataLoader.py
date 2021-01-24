@@ -17,12 +17,14 @@ class IdealFertilityDataLoader(FertilityDataLoader):
         return self.__get_any_american(data)
 
     def __verify_any_condition(self, data):
+        has_trait_to_study = data[col[self._trait_to_study]] != ''
         has_ideal_fertility = data[col["IDEAL_NUMBER_OF_CHILDREN"]] != ''
         has_age = data[col["AGE"]] != ''
         has_iq = data[col["IQ"]] != ''
-        has_age_at_first_child = data[col["AGE_AT_FIRST_CHILD"]] != '' or data[col["IDEAL_NUMBER_OF_CHILDREN"]] == '0'
-        has_trait_to_study = data[col[self._trait_to_study]] != ''
-        return has_ideal_fertility and has_age and has_iq and has_age_at_first_child and has_trait_to_study
+        has_age_at_first_child = data[col["AGE_AT_FIRST_CHILD"]].isdigit()
+        wants_no_children = data[col["IDEAL_NUMBER_OF_CHILDREN"]] == '0'
+        return has_trait_to_study and has_ideal_fertility and has_age and has_iq and (
+                    has_age_at_first_child or wants_no_children)
 
     def __get_any_american(self, data):
         return American(

@@ -30,6 +30,9 @@ class American:
     def has_born(self, current_year):
         return self.age(current_year) >= 0
 
+    def has_retired(self, current_year):
+        return self.age(current_year) >= US_AGE_OF_RETIREMENT
+
     def has_died(self, current_year):
         return self.age(current_year) >= US_LIFE_EXPECTANCY
 
@@ -48,6 +51,7 @@ class American:
             return whole_number_of_children
 
 
-US_LIFE_EXPECTANCY = 79
 US_AVERAGE_AGE_GAP_NEXT_SIBLING = 2
+US_LIFE_EXPECTANCY = 79
+US_AGE_OF_RETIREMENT = 67
 US_VOTING_AGE = 18

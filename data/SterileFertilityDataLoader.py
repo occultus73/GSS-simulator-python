@@ -17,10 +17,10 @@ class SterileFertilityDataLoader(FertilityDataLoader):
         return self.__get_any_american(data)
 
     def __verify_any_condition(self, data):
+        has_trait_to_study = data[col[self._trait_to_study]] != ''
         has_age = data[col["AGE"]] != ''
         has_iq = data[col["IQ"]] != ''
-        has_trait_to_study = data[col[self._trait_to_study]] != ''
-        return has_age and has_iq and has_trait_to_study
+        return has_trait_to_study and has_age and has_iq
 
     def __get_any_american(self, data):
         return American(

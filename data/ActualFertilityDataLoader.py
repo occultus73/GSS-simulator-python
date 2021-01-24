@@ -5,20 +5,24 @@ from data.GSS_data_columns import gss_columns as col
 
 class ActualFertilityDataLoader(FertilityDataLoader):
     def _verify_male_american_condition(self, data):
+        has_trait_to_study = data[col[self._trait_to_study]] != ''
         has_completed_fertility = data[col["CHILDREN_OF_MALE_OVER_44"]] != ''
         has_age = data[col["AGE"]] != ''
         has_iq = data[col["IQ"]] != ''
-        has_age_at_first_child = data[col["AGE_AT_FIRST_CHILD"]] != '' or data[col["CHILDREN_OF_MALE_OVER_44"]] == '0'
-        has_trait_to_study = data[col[self._trait_to_study]] != ''
-        return has_completed_fertility and has_age and has_iq and has_age_at_first_child and has_trait_to_study
+        has_age_at_first_child = data[col["AGE_AT_FIRST_CHILD"]].isdigit()
+        has_no_children = data[col["CHILDREN_OF_MALE_OVER_44"]] == '0'
+        return has_trait_to_study and has_completed_fertility and has_age and has_iq and (
+                has_age_at_first_child or has_no_children)
 
     def _verify_female_american_condition(self, data):
+        has_trait_to_study = data[col[self._trait_to_study]] != ''
         has_completed_fertility = data[col["CHILDREN_OF_FEMALE_OVER_41"]] != ''
         has_age = data[col["AGE"]] != ''
         has_iq = data[col["IQ"]] != ''
-        has_age_at_first_child = data[col["AGE_AT_FIRST_CHILD"]] != '' or data[col["CHILDREN_OF_FEMALE_OVER_41"]] == '0'
-        has_trait_to_study = data[col[self._trait_to_study]] != ''
-        return has_completed_fertility and has_age and has_iq and has_age_at_first_child and has_trait_to_study
+        has_age_at_first_child = data[col["AGE_AT_FIRST_CHILD"]].isdigit()
+        has_no_children = data[col["CHILDREN_OF_FEMALE_OVER_41"]] == '0'
+        return has_trait_to_study and has_completed_fertility and has_age and has_iq and (
+                has_age_at_first_child or has_no_children)
 
     def _get_male_american(self, data):
         return American(
