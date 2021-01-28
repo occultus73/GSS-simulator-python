@@ -1,6 +1,6 @@
 from random import random
 
-from data.lazy_property import lazy_property
+from data_loading.lazy_property import lazy_property
 
 
 class American:

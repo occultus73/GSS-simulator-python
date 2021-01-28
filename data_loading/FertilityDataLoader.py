@@ -1,6 +1,6 @@
 import abc
 
-from data.GSS_data_columns import gss_columns as col
+from data_loading.GSS_data_columns import gss_columns as col
 
 
 class FertilityDataLoader(metaclass=abc.ABCMeta):

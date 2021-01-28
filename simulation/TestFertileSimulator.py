@@ -1,7 +1,7 @@
 import unittest
 
 from simulation.FertileSimulator import FertileSimulator
-from data.American import American
+from data_loading.American import American
 
 
 class TestFertileSimulator(unittest.TestCase):

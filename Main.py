@@ -2,9 +2,9 @@ from datetime import datetime
 
 from simulation.FertileSimulator import FertileSimulator
 from simulation.SerileSimulator import SterileSimulator
-from data.ActualFertilityDataLoader import ActualFertilityDataLoader
-from data.IdealFertilityDataLoader import IdealFertilityDataLoader
-from data.SterileFertilityDataLoader import SterileFertilityDataLoader
+from data_loading.ActualFertilityDataLoader import ActualFertilityDataLoader
+from data_loading.IdealFertilityDataLoader import IdealFertilityDataLoader
+from data_loading.SterileFertilityDataLoader import SterileFertilityDataLoader
 from information import graph_sample_information
 from meta_information import graph_sample_meta_information
 

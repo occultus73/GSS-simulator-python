@@ -1,6 +1,6 @@
-from data.American import American
-from data.FertilityDataLoader import FertilityDataLoader, _get_race, _get_sex, _get_age_at_first_child
-from data.GSS_data_columns import gss_columns as col
+from data_loading.American import American
+from data_loading.FertilityDataLoader import FertilityDataLoader, _get_race, _get_sex, _get_age_at_first_child
+from data_loading.GSS_data_columns import gss_columns as col
 
 
 class IdealFertilityDataLoader(FertilityDataLoader):
