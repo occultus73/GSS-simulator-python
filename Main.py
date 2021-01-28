@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from business.FertileSimulator import FertileSimulator
-from business.SerileSimulator import SterileSimulator
+from simulation.FertileSimulator import FertileSimulator
+from simulation.SerileSimulator import SterileSimulator
 from data.ActualFertilityDataLoader import ActualFertilityDataLoader
 from data.IdealFertilityDataLoader import IdealFertilityDataLoader
 from data.SterileFertilityDataLoader import SterileFertilityDataLoader

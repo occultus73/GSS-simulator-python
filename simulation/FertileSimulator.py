@@ -1,4 +1,4 @@
-from business.Simulator import Simulator
+from simulation.Simulator import Simulator
 
 
 class FertileSimulator(Simulator):

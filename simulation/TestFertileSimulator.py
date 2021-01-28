@@ -1,6 +1,6 @@
 import unittest
 
-from business.FertileSimulator import FertileSimulator
+from simulation.FertileSimulator import FertileSimulator
 from data.American import American
 
 
