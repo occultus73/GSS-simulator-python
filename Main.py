@@ -5,6 +5,7 @@ from business.SerileSimulator import SterileSimulator
 from data.ActualFertilityDataLoader import ActualFertilityDataLoader
 from data.IdealFertilityDataLoader import IdealFertilityDataLoader
 from data.SterileFertilityDataLoader import SterileFertilityDataLoader
+from information import graph_sample_information
 from meta_information import graph_sample_meta_information
 
 TRAIT_TO_STUDY = "CONSERVATIVE"
@@ -31,7 +32,16 @@ if __name__ == '__main__':
     sterile_fertility_results = [(year, sterile_fertility_simulator.next_year()) for year in years]
 
     # Analyse the results
-    graph_sample_meta_information(f"output-{MIN_YEAR_OF_BIRTH}/{TRAIT_TO_STUDY}/sample_meta_information",
+    max_trait_value = int(max([a.trait for a in sterile_fertility_sample]))
+    min_trait_value = int(min([a.trait for a in sterile_fertility_sample]))
+
+    graph_sample_information(TRAIT_TO_STUDY, max_trait_value, min_trait_value,
+                             f"output/{MIN_YEAR_OF_BIRTH}/{TRAIT_TO_STUDY}",
+                             actual_fertility_results,
+                             ideal_fertility_results,
+                             sterile_fertility_results)
+
+    graph_sample_meta_information(f"output/{MIN_YEAR_OF_BIRTH}/{TRAIT_TO_STUDY}/sample_meta_information",
                                   actual_fertility_results,
                                   ideal_fertility_results,
                                   sterile_fertility_results)
