@@ -1,12 +1,12 @@
 from datetime import datetime
 
-from simulation.FertileSimulator import FertileSimulator
-from simulation.SerileSimulator import SterileSimulator
 from data_loading.ActualFertilityDataLoader import ActualFertilityDataLoader
 from data_loading.IdealFertilityDataLoader import IdealFertilityDataLoader
 from data_loading.SterileFertilityDataLoader import SterileFertilityDataLoader
-from information import graph_sample_information
+from information import InformationProcessor
 from meta_information import graph_sample_meta_information
+from simulation.FertileSimulator import FertileSimulator
+from simulation.SerileSimulator import SterileSimulator
 
 TRAIT_TO_STUDY = "CONSERVATIVE"
 MIN_YEAR_OF_BIRTH = 1965
@@ -35,11 +35,11 @@ if __name__ == '__main__':
     max_trait_value = int(max([a.trait for a in sterile_fertility_sample]))
     min_trait_value = int(min([a.trait for a in sterile_fertility_sample]))
 
-    graph_sample_information(TRAIT_TO_STUDY, max_trait_value, min_trait_value,
-                             f"output/{MIN_YEAR_OF_BIRTH}/{TRAIT_TO_STUDY}",
-                             actual_fertility_results,
-                             ideal_fertility_results,
-                             sterile_fertility_results)
+    InformationProcessor(TRAIT_TO_STUDY, max_trait_value, min_trait_value,
+                         f"output/{MIN_YEAR_OF_BIRTH}/{TRAIT_TO_STUDY}",
+                         actual_fertility_results,
+                         ideal_fertility_results,
+                         sterile_fertility_results).process_results()
 
     graph_sample_meta_information(f"output/{MIN_YEAR_OF_BIRTH}/{TRAIT_TO_STUDY}/sample_meta_information",
                                   actual_fertility_results,
