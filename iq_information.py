@@ -72,6 +72,10 @@ def get_iq_segregated_populations(actual_results, ideal_results, sterile_results
         "actual_Q3_IQ": actual_q3_iq,
         "actual_Q2_IQ": actual_q2_iq,
         "actual_Q1_IQ": actual_q1_iq,
+        "actual_Average_IQ": actual_average_iq,
+        "actual_Upper_Quartile_IQ": actual_upper_quartile_iq,
+        "actual_Lower_Quartile_IQ": actual_lower_quartile_iq,
+        
 
         "ideal_Above_Average_IQ": ideal_above_average_iq,
         "ideal_Below_Average_IQ": ideal_below_average_iq,
@@ -79,6 +83,9 @@ def get_iq_segregated_populations(actual_results, ideal_results, sterile_results
         "ideal_Q3_IQ": ideal_q3_iq,
         "ideal_Q2_IQ": ideal_q2_iq,
         "ideal_Q1_IQ": ideal_q1_iq,
+        "ideal_Average_IQ": ideal_average_iq,
+        "ideal_Upper_Quartile_IQ": ideal_upper_quartile_iq,
+        "ideal_Lower_Quartile_IQ": ideal_lower_quartile_iq,
 
         "sterile_Above_Average_IQ": sterile_above_average_iq,
         "sterile_Below_Average_IQ": sterile_below_average_iq,
@@ -86,4 +93,7 @@ def get_iq_segregated_populations(actual_results, ideal_results, sterile_results
         "sterile_Q3_IQ": sterile_q3_iq,
         "sterile_Q2_IQ": sterile_q2_iq,
         "sterile_Q1_IQ": sterile_q1_iq,
+        "sterile_Average_IQ": sterile_average_iq,
+        "sterile_Upper_Quartile_IQ": sterile_upper_quartile_iq,
+        "sterile_Lower_Quartile_IQ": sterile_lower_quartile_iq,
     }
