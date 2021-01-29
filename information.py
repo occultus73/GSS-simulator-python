@@ -62,7 +62,7 @@ class InformationProcessor:
             directory_extension = f"{directory_extension}/{dem}"
 
         graph_simulation_results(f"{self.__directory}/{directory_extension}",
-                                 f"Average_{self.__trait}_{dem}_Population", "% of {dem} Population",
+                                 f"Average_{self.__trait}_{dem}_Population", f"% of {dem} Population",
                                  [(year, sum([1 for a in year_pop if a.trait == score]) * 100 / len(year_pop))
                                   for year, year_pop in dem_pop[f"actual_{dem}_Population"] if len(year_pop) > 100],
                                  [(year, sum([1 for a in year_pop if a.trait == score]) * 100 / len(year_pop))
