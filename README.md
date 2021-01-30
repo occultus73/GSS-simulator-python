@@ -4,7 +4,11 @@ Demo video here: https://youtu.be/Ii-yRrk7r98
 Regard the <b>output</b> directory for all of the graphed simulation results. Each generational directory contains 60,096 matplotlib graphs.
 
 ## Explantion
-This "GSS Simulator" is actually comprised of three different simulations: 1) Actual Fertility, 2) Ideal Fertility, 3) Sterile Fertility. All three of these simulations extract their samples from the 1994-2018 GSS datasets, all metrics that each simulation requires for each given survee are available. All graphs that are provided within the output directory purport to represent the US adult working population (18-67). None of the simulations will plot data that is based on less than a hundred individuals (actual or generated), and therefore simulations will sometime start or terminate late, or dissapear completely; indeed, for some extremely-filtered analyses, the graphs are completely blank for this reason, unfortunately.
+This "GSS Simulator" is actually comprised of three different simulations: 
+  1) Actual Fertility, 
+  2) Ideal Fertility, 
+  3) Sterile Fertility. 
+All three of these simulations extract their samples from the 1994-2018 GSS datasets, all metrics that each simulation requires for each given survee are available. All graphs that are provided within the output directory purport to represent the US adult working population (18-67). None of the simulations will plot data that is based on less than a hundred individuals (actual or generated), and therefore simulations will sometime start or terminate late, or dissapear completely; indeed, for some extremely-filtered analyses, the graphs are completely blank for this reason, unfortunately.
 
 For further details, the reader is encourage to review the improvisational discussion of this Simulator in the video linked above.
 
