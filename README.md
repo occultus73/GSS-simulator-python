@@ -33,7 +33,7 @@ For further details, the reader is encouraged to review the improvisational disc
 
 3. Finally, although it is not an actual limitation, because it represents a genuine phenomenon in reality, women have a disproportionately larger effect on the fertility simulations because they have children at a younger age than men (also inasmuch as there is a small childfree sample bias, childfree individuals are more likely to be male, insofar as more reproductive inequality exists among males). The evolutionary implications of the fact that one sex has more influence over the genepool than the other when there is a substantial difference at which age reproduction begins, is an important finding of this Simulator and worthy of seperate discussion by itself. There is literature showing that paternal age predicts a given societies' birth sex ratio.
 
-### Accuracy
+### Technical Accuracy
 Concerning the reliability of this Simulator project - skepticism of which, is justified, as it was created by only one author and thus far been reviewed by no one else - a unit test is provided in "TestFertileSimulator.py" under the simulation package, to validate the most complex operation of the codebase: the growth of the population. However, the main strategy of validation employed for this project is by recreating the codebase in a second language - Python. The original simulator was created in Kotlin, and is availble in this sister repostiroy here: 
 
 https://github.com/occultus73/GSS-population-simulation
