@@ -20,7 +20,7 @@ def graph_simulation_results(directory, name, unit, actual_data, ideal_data, ste
     plt.xlabel("Years")
     plt.ylabel(unit)
     plt.title(name)
-    plt.legend()
+    plt.legend(title="Fertility")
     plt.grid(True)
     plt.tight_layout()
 
