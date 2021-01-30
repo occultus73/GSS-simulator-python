@@ -50,6 +50,6 @@ def run_simulation(trait_to_study):
 
 
 if __name__ == '__main__':
-    eligible_columns = [key for key, value in gss_columns.items() if 12 < value < 145]
+    eligible_columns = [key for key, value in gss_columns.items() if 123 < value < 145]
     for eligible_column in eligible_columns:
         run_simulation(eligible_column)
