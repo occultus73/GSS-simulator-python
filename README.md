@@ -39,3 +39,8 @@ Concerning the reliability of this Simulator project - skepticism of which, is j
 https://github.com/occultus73/GSS-population-simulation
 
 This can be used to independently recreate any graph given in the output of this Python codebase, given the right parameters, and therby, validate the technical validity of this python codebase. Given indepenent verification by the alternative Kotlin codebase, the output should still prove to be erroneous in some manner, that would therefore be due to some inherent flaw in the methodology I have employed; not a programming bug.
+
+### Feedback
+If you need further information, or have some feedback or suggestions, or would even like to help me develop this project further in some way, please feel free to reach out to me here on GitHub.
+
+J. O. A. Rayner-Hilles.
