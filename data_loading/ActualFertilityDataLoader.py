@@ -27,10 +27,11 @@ class ActualFertilityDataLoader(FertilityDataLoader):
     def _get_male_american(self, data):
         return American(
             year_born=int(data[col["YEAR_BORN"]]),
-            age_at_survey=int(data[col["AGE"]]),
+            surveyee_age=int(data[col["AGE"]]),
             iq=float(data[col["IQ"]]),
             race=_get_race(data),
             sex=_get_sex(data),
+            marriage=data[col["MARRIAGE_CONDITION"]],
             number_of_children=float(data[col["CHILDREN_OF_MALE_OVER_44"]]) / 2.0,
             age_at_first_child=_get_age_at_first_child(data),
             trait=float(data[col[self._trait_to_study]])
@@ -39,10 +40,11 @@ class ActualFertilityDataLoader(FertilityDataLoader):
     def _get_female_american(self, data):
         return American(
             year_born=int(data[col["YEAR_BORN"]]),
-            age_at_survey=int(data[col["AGE"]]),
+            surveyee_age=int(data[col["AGE"]]),
             iq=float(data[col["IQ"]]),
             race=_get_race(data),
             sex=_get_sex(data),
+            marriage=data[col["MARRIAGE_CONDITION"]],
             number_of_children=float(data[col["CHILDREN_OF_FEMALE_OVER_41"]]) / 2.0,
             age_at_first_child=_get_age_at_first_child(data),
             trait=float(data[col[self._trait_to_study]])

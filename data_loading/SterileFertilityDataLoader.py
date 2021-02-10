@@ -25,10 +25,11 @@ class SterileFertilityDataLoader(FertilityDataLoader):
     def __get_any_american(self, data):
         return American(
             year_born=int(data[col["YEAR_BORN"]]),
-            age_at_survey=int(data[col["AGE"]]),
+            surveyee_age=int(data[col["AGE"]]),
             iq=float(data[col["IQ"]]),
             race=_get_race(data),
             sex=_get_sex(data),
+            marriage=data[col["MARRIAGE_CONDITION"]],
             number_of_children=0.0,
             age_at_first_child=_get_age_at_first_child(data),
             trait=float(data[col[self._trait_to_study]])

@@ -4,12 +4,13 @@ from data_loading.lazy_property import lazy_property
 
 
 class American:
-    def __init__(self, year_born, age_at_survey, iq, race, sex, number_of_children, age_at_first_child, trait):
+    def __init__(self, year_born, surveyee_age, iq, race, sex, marriage, number_of_children, age_at_first_child, trait):
         self.year_born = year_born
-        self.age_at_survey = age_at_survey
+        self.surveyee_age = surveyee_age
         self.iq = iq
         self.race = race
         self.sex = sex
+        self.marriage = marriage
         self.number_of_children = number_of_children
         self.age_at_first_child = age_at_first_child
         self.trait = trait
@@ -18,10 +19,11 @@ class American:
     def children(self):
         return [American(
             year_born=self.year_born + self.age_at_first_child + birth_order * US_AVERAGE_AGE_GAP_NEXT_SIBLING,
-            age_at_survey=self.age_at_survey,
+            surveyee_age=self.surveyee_age,
             iq=self.iq,
             race=self.race,
             sex=self.sex,
+            marriage=self.marriage,
             number_of_children=self.number_of_children,
             age_at_first_child=self.age_at_first_child,
             trait=self.trait

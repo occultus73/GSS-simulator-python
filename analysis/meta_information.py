@@ -18,11 +18,11 @@ def graph_sample_meta_information(directory, actual_results, ideal_results, ster
                               for year, year_pop in sterile_results if len(year_pop) > 100])
 
     graph_simulation_results(directory, "Average Age at Survey", "Age",
-                             [(year, np.mean([a.age_at_survey for a in year_pop]))
+                             [(year, np.mean([a.surveyee_age for a in year_pop]))
                               for year, year_pop in actual_results if len(year_pop) > 100],
-                             [(year, np.mean([a.age_at_survey for a in year_pop]))
+                             [(year, np.mean([a.surveyee_age for a in year_pop]))
                               for year, year_pop in ideal_results if len(year_pop) > 100],
-                             [(year, np.mean([a.age_at_survey for a in year_pop]))
+                             [(year, np.mean([a.surveyee_age for a in year_pop]))
                               for year, year_pop in sterile_results if len(year_pop) > 100])
 
     graph_simulation_results(directory, "Average Number of Children", "No. of Children",
