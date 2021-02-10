@@ -1,3 +1,4 @@
+import sys
 from datetime import datetime
 
 from data_loading.ActualFertilityDataLoader import ActualFertilityDataLoader
@@ -14,7 +15,7 @@ GENERATIONS = {
     "Boomers": 1945,
     "GenX": 1965,
     "Millennials": 1981,
-    "GenZ": 1996,
+    # "GenZ": 1996,
 }
 
 
@@ -60,7 +61,32 @@ def run_simulation(trait_to_study, generation_name, minimum_year_of_birth):
 
 
 if __name__ == '__main__':
-    for generation, min_year_of_birth in GENERATIONS.items():
+    arguments = sys.argv[1:]
+    if len(arguments) == 0:
+        for generation, min_year_of_birth in GENERATIONS.items():
+            eligible_columns = [key for key, value in gss_columns.items() if 12 < value < 145]
+            for eligible_column in eligible_columns:
+                run_simulation(eligible_column, generation, min_year_of_birth)
+    elif len(arguments) == 1:
         eligible_columns = [key for key, value in gss_columns.items() if 12 < value < 145]
         for eligible_column in eligible_columns:
-            run_simulation(eligible_column, generation, min_year_of_birth)
+            if arguments[0].isalpha():
+                run_simulation(eligible_column, arguments[0], GENERATIONS[arguments[0]])
+            elif arguments[0].isnumeric():
+                run_simulation(eligible_column, arguments[0], int(arguments[0]))
+    elif len(arguments) == 2:
+        if arguments[0].isalpha():
+            run_simulation(arguments[1], arguments[0], GENERATIONS[arguments[0]])
+        elif arguments[0].isnumeric():
+            run_simulation(arguments[1], arguments[0], int(arguments[0]))
+    else:
+        print("\nUsage: Main.py [Generation] [Trait to Study]\n")
+        print("If [Trait to Study] is not specified, graphs for all traits are generated (this takes a while).")
+        print("If [Generation] is not specified, graphs for all generations are generated (this takes ages).")
+        print("\nList of available Generations:")
+        for generation, min_year_of_birth in GENERATIONS.items():
+            print(f"{generation} ({min_year_of_birth})")
+        print("\nList of available Traits:")
+        for key, value in gss_columns.items():
+            if 12 < value < 145:
+                print(key)
