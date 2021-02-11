@@ -6,7 +6,6 @@ from data_loading.GSS_data_columns import gss_columns
 from data_loading.IdealFertilityDataLoader import IdealFertilityDataLoader
 from data_loading.SterileFertilityDataLoader import SterileFertilityDataLoader
 from analysis.information import InformationProcessor
-from analysis.meta_information import graph_sample_meta_information
 from simulation.FertileSimulator import FertileSimulator
 from simulation.SerileSimulator import SterileSimulator
 
@@ -53,11 +52,6 @@ def run_simulation(trait_to_study, generation_name, minimum_year_of_birth):
                          actual_fertility_results,
                          ideal_fertility_results,
                          sterile_fertility_results).process_results()
-
-    graph_sample_meta_information(f"output/{generation_name}/{trait_to_study}/_Sample_Meta_Information",
-                                  actual_fertility_results,
-                                  ideal_fertility_results,
-                                  sterile_fertility_results)
 
 
 if __name__ == '__main__':

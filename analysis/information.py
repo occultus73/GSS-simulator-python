@@ -3,6 +3,7 @@ import numpy as np
 from analysis.demographic_information import get_segregated_populations
 from analysis.graph_methods import graph_simulation_results
 from analysis.iq_information import get_iq_segregated_populations
+from analysis.meta_information import graph_meta_info
 
 demographics = ["Whole", "White", "Black", "Male", "Female", "White_Male", "White_Female", "Black_Male", "Black_Female"]
 iq_demographics = ["Above_Average_IQ", "Below_Average_IQ", "Q4_IQ", "Q3_IQ", "Q2_IQ", "Q1_IQ"]
@@ -46,6 +47,13 @@ class InformationProcessor:
                                  [(year, np.mean([a.trait for a in year_pop]))
                                   for year, year_pop in dem_pop[f"sterile_{dem}_Population"] if len(year_pop) > 100])
 
+        # Also graph further meta-information, for this demographic
+        graph_meta_info(f"{self.__directory}/{directory_extension}/_Meta_Information", f"{dem}",
+                        dem_pop[f"actual_{dem}_Population"],
+                        dem_pop[f"ideal_{dem}_Population"],
+                        dem_pop[f"sterile_{dem}_Population"])
+
+        # Graph IQ sub-demographics
         iq_demographic_pops = get_iq_segregated_populations(dem_pop[f"actual_{dem}_Population"],
                                                             dem_pop[f"ideal_{dem}_Population"],
                                                             dem_pop[f"sterile_{dem}_Population"])
@@ -63,8 +71,7 @@ class InformationProcessor:
             directory_extension = f"{directory_extension}/{dem}"
 
         graph_simulation_results(f"{self.__directory}/{directory_extension}",
-                                 f"{self.__trait}_{dem}_Population_Scoring: {score}",
-                                 f"% of {dem} Population",
+                                 f"{self.__trait}_{dem}_Population_scoring_{score}", f"% of {dem} Population",
                                  [(year, sum([1 for a in year_pop if a.trait == score]) * 100 / len(year_pop))
                                   for year, year_pop in dem_pop[f"actual_{dem}_Population"] if len(year_pop) > 100],
                                  [(year, sum([1 for a in year_pop if a.trait == score]) * 100 / len(year_pop))
@@ -72,6 +79,16 @@ class InformationProcessor:
                                  [(year, sum([1 for a in year_pop if a.trait == score]) * 100 / len(year_pop))
                                   for year, year_pop in dem_pop[f"sterile_{dem}_Population"] if len(year_pop) > 100])
 
+        # Also graph further meta-information, for this demographic score proportion
+        graph_meta_info(f"{self.__directory}/{directory_extension}/_Meta_Information", f"{dem}_scoring_{score}",
+                        [(year, [a for a in year_pop if a.trait == score])
+                         for year, year_pop in dem_pop[f"actual_{dem}_Population"] if len(year_pop) > 100],
+                        [(year, [a for a in year_pop if a.trait == score])
+                         for year, year_pop in dem_pop[f"ideal_{dem}_Population"] if len(year_pop) > 100],
+                        [(year, [a for a in year_pop if a.trait == score])
+                         for year, year_pop in dem_pop[f"sterile_{dem}_Population"] if len(year_pop) > 100])
+
+        # Graph IQ sub-demographics
         iq_demographic_pops = get_iq_segregated_populations(dem_pop[f"actual_{dem}_Population"],
                                                             dem_pop[f"ideal_{dem}_Population"],
                                                             dem_pop[f"sterile_{dem}_Population"])
@@ -83,7 +100,7 @@ class InformationProcessor:
 
     def __graph_avg_trait_by_iq_demographic(self, directory_extension, dem, iq_dem, iq_dem_pop):
         # Graph average for specific IQ demographic
-        graph_simulation_results(f"{self.__directory}{directory_extension}",
+        graph_simulation_results(f"{self.__directory}/{directory_extension}",
                                  f"Average_{self.__trait}_{dem}_{iq_dem}",
                                  f"Score({self.__min_trt}-{self.__max_trt})",
                                  [(year, np.mean([a.trait for a in year_pop]))
@@ -92,6 +109,12 @@ class InformationProcessor:
                                   for year, year_pop in iq_dem_pop[f"ideal_{iq_dem}"] if len(year_pop) > 100],
                                  [(year, np.mean([a.trait for a in year_pop]))
                                   for year, year_pop in iq_dem_pop[f"sterile_{iq_dem}"] if len(year_pop) > 100])
+
+        # Also graph further meta-information, for this IQ demographic
+        graph_meta_info(f"{self.__directory}/{directory_extension}/_Meta_Information", f"{dem}_{iq_dem}",
+                        iq_dem_pop[f"actual_{iq_dem}"],
+                        iq_dem_pop[f"ideal_{iq_dem}"],
+                        iq_dem_pop[f"sterile_{iq_dem}"])
 
     def __graph_proportion_by_iq_demographic(self, directory_extension, dem, iq_dem, iq_dem_pop, score):
         # Graph score population proportions for specific IQ demographic
@@ -105,9 +128,19 @@ class InformationProcessor:
                                  [(year, sum([1 for a in year_pop if a.trait == score]) * 100 / len(year_pop))
                                   for year, year_pop in iq_dem_pop[f"sterile_{iq_dem}"] if len(year_pop) > 100])
 
+        # Also graph further meta-information, for this IQ demographic score proportion
+        graph_meta_info(f"{self.__directory}/{directory_extension}/_Meta_Information",
+                        f"{dem}_{iq_dem}_scoring_{score}",
+                        [(year, [a for a in year_pop if a.trait == score])
+                         for year, year_pop in iq_dem_pop[f"actual_{iq_dem}"] if len(year_pop) > 100],
+                        [(year, [a for a in year_pop if a.trait == score])
+                         for year, year_pop in iq_dem_pop[f"ideal_{iq_dem}"] if len(year_pop) > 100],
+                        [(year, [a for a in year_pop if a.trait == score])
+                         for year, year_pop in iq_dem_pop[f"sterile_{iq_dem}"] if len(year_pop) > 100])
+
     def __graph_iq_averages(self, directory_extension, dem, iq_average, iq_dem_pop):
         # Graph score population proportions for specific IQ demographic
-        graph_simulation_results(f"{self.__directory}/{directory_extension}/_Sample_Meta_Information",
+        graph_simulation_results(f"{self.__directory}/{directory_extension}/_Meta_Information",
                                  f"{iq_average}_in_{self.__trait}_Sample for {dem}", "IQ",
                                  iq_dem_pop[f"actual_{iq_average}"].items(),
                                  iq_dem_pop[f"ideal_{iq_average}"].items(),
