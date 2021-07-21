@@ -1,5 +1,5 @@
 # GSS-simulator-python
-Regard the <b>output</b> directory for all of the graphed simulation results. Each generational directory contains 60,096 matplotlib graphs.
+Regard the <b>output</b> directory for all of the graphed simulation results. Each generational directory contains about a million matplotlib graphs.
 
 ## Explantion
 This "GSS Simulator" is actually comprised of three different simulations: 
